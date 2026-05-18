@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Cameratesting : MonoBehaviour
 {    
-    Camera cam;
+    public Camera cam;
 
     [Tooltip("The maximum distnace a raycast will travel from the camera")]
     public float maxCameraRaycast = 20f;    // The max distance a raycast will travel from the camera
@@ -12,7 +12,7 @@ public class Cameratesting : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        cam = Camera.main;
+
     }
 
     // Update is called once per frame
