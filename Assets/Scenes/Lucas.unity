@@ -260,9 +260,6 @@ GameObject:
   - component: {fileID: 1273325687}
   - component: {fileID: 1273325686}
   - component: {fileID: 1273325692}
-  - component: {fileID: 1273325691}
-  - component: {fileID: 1273325694}
-  - component: {fileID: 1273325693}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -380,24 +377,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1273325691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273325685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f1101697d465ef4e8de62449b343235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterMove
-  speedWalk: 4
-  speedRun: 8
-  characterController: {fileID: 0}
-  cameraSelector: {fileID: 0}
-  inputsThisFrame: {x: 0, y: 0}
-  movement: {x: 0, y: 0, z: 0}
 --- !u!143 &1273325692
 CharacterController:
   m_ObjectHideFlags: 0
@@ -423,38 +402,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1273325693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273325685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e9a8ec184bcfa44e8ce44b815eafadf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraSelector
-  selection: 0
-  firstPersonCamera: {fileID: 0}
-  thirdPersonCamera: {fileID: 0}
---- !u!114 &1273325694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273325685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47f6b81cba19789489fe24ddce66eb9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterJump
-  jumpPower: 10
-  gravity: 9.81
-  yVelocity: 0
-  characterController: {fileID: 0}
-  IsGravityEnabled: 1
 --- !u!1 &1878677212
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,10 +6,7 @@ public class Cameratesting : MonoBehaviour
 
     [Tooltip("The maximum distnace a raycast will travel from the camera")]
     public float maxCameraRaycast = 20f;    // The max distance a raycast will travel from the camera
-
     public LayerMask layerToIgnore;  // layers to ignore e.g. the player
-
-    public float coolDownTime = 1.0f;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,15 +24,10 @@ public class Cameratesting : MonoBehaviour
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit , maxCameraRaycast, ~layerToIgnore)) // should spilt this up 
             {
                 print("hit an object");
-                print(hit.collider.gameObject.name);
+                print(hit.transform.gameObject.name);
             }
         }
     }
 
 
-
-    public void raycastOutFromCamera()
-    {
-
-    }
 }
