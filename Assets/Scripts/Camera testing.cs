@@ -7,8 +7,10 @@ public class Cameratesting : MonoBehaviour
 
     [Tooltip("The maximum distnace a raycast will travel from the camera")]
     public float maxCameraRaycast = 20f;    // The max distance a raycast will travel from the camera
+    [Tooltip("Layers that the camera will ignore, e.g. the player, small bushes ect")]
     public LayerMask layerToIgnore;  // layers to ignore e.g. the player
 
+    private float nextClickTime = 0f;
     public Texture2D texture2D;
     public RenderTexture myRenderTexture;
 
@@ -29,13 +31,17 @@ public class Cameratesting : MonoBehaviour
         // when you left click a raycast is performed in the centre of your screen 
         if (Input.GetMouseButton(0))  // 0 is left click
         {
-            print("Mouse clicked");
             // if the raycast hits something it prints its name and saves the texture 
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit , maxCameraRaycast, ~layerToIgnore)) // should spilt this up 
             {
-                print("hit an object");
                 print(hit.transform.gameObject.name);
-                saveImage();
+
+                if (hit.collider.CompareTag("Collision"))
+                {
+                    saveImage();
+                    print("Hit a special thing and saved and image");
+                }
+
             }
         }
     }
@@ -59,9 +65,12 @@ public class Cameratesting : MonoBehaviour
         Sprite newsprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(0.5f, 0.5f));
 
         guiImage.sprite = newsprite;
+    }
 
-
+    public void CheckLayer()
+    {
 
     }
+
 
 }
