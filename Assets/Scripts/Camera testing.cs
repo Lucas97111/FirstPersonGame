@@ -15,6 +15,8 @@ public class Cameratesting : MonoBehaviour
     public RenderTexture myRenderTexture;
 
     public Image guiImage;
+
+    public GameObject cameraoutputcanvas;
     
 
     
@@ -36,9 +38,16 @@ public class Cameratesting : MonoBehaviour
             {
                 print(hit.transform.gameObject.name);
 
+
+                saveImage();
+                cameraoutputcanvas.SetActive(true);
+                Invoke("DisableUI", 2f);
+
+
+
                 if (hit.collider.CompareTag("Collision"))
                 {
-                    saveImage();
+
                     print("Hit a special thing and saved and image");
                 }
 
@@ -65,10 +74,17 @@ public class Cameratesting : MonoBehaviour
         Sprite newsprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(0.5f, 0.5f));
 
         guiImage.sprite = newsprite;
+
     }
 
     public void CheckLayer()
     {
+
+    }
+
+    public void DisableUI()
+    {
+        cameraoutputcanvas.SetActive(false);
 
     }
 
