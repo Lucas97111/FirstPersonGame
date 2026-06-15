@@ -14,7 +14,7 @@ public class Cameratesting : MonoBehaviour
     public float cameracooldown = 5f;
 
     private float nextClickTime = 0f;
-    public Texture2D texture2D;
+    private Texture2D texture2D;
     public RenderTexture myRenderTexture;
 
     public Image guiImage;
@@ -46,10 +46,10 @@ public class Cameratesting : MonoBehaviour
 
                 nextClickTime = Time.time + cameracooldown;
             }
-            //else
-            //{
-            //    camerafail.Play();
-            //}
+            else
+            {
+                camerafail.Play();
+            }
 
         }
     }
@@ -61,15 +61,6 @@ public class Cameratesting : MonoBehaviour
         {
             print(hit.transform.gameObject.name);
 
-            camerascucess.Play();
-
-
-            saveImage();
-            cameraoutputcanvas.SetActive(true);
-            Invoke("DisableUI", 2f);
-
-
-
             if (hit.collider.CompareTag("Collision"))
             {
 
@@ -79,6 +70,13 @@ public class Cameratesting : MonoBehaviour
             }
 
         }
+        camerascucess.Play();
+
+        saveImage();
+        cameraoutputcanvas.SetActive(true);
+        Invoke("DisableUI", 2f);
+
+
     }
 
 
@@ -105,11 +103,7 @@ public class Cameratesting : MonoBehaviour
 
     }
 
-    public void CheckLayer()
-    {
-
-    }
-
+    // disables the ui in 2 seconds via an invoke call
     public void DisableUI()
     {
         cameraoutputcanvas.SetActive(false);

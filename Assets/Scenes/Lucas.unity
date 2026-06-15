@@ -1180,7 +1180,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Photo wasn't of the fallen angle
+  m_text: 'Photo wasn''t of the fallen angel
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1377,8 +1379,7 @@ MonoBehaviour:
   layerToIgnore:
     serializedVersion: 2
     m_Bits: 64
-  cameracooldown: 5
-  texture2D: {fileID: 2800000, guid: 93aa964ea5f323e46b0932a8db1312fb, type: 3}
+  cameracooldown: 3
   myRenderTexture: {fileID: 8400000, guid: d66ac96c12fd23f4c830bd665beddad5, type: 2}
   guiImage: {fileID: 1231257378}
   cameraoutputcanvas: {fileID: 562194783}
