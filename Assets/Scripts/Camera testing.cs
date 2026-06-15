@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Cameratesting : MonoBehaviour
 {    
@@ -9,6 +10,8 @@ public class Cameratesting : MonoBehaviour
     public float maxCameraRaycast = 20f;    // The max distance a raycast will travel from the camera
     [Tooltip("Layers that the camera will ignore, e.g. the player, small bushes ect")]
     public LayerMask layerToIgnore;  // layers to ignore e.g. the player
+    [Tooltip("How often the player can take a picture")]
+    public float cameracooldown = 5f;
 
     private float nextClickTime = 0f;
     public Texture2D texture2D;
@@ -17,6 +20,10 @@ public class Cameratesting : MonoBehaviour
     public Image guiImage;
 
     public GameObject cameraoutputcanvas;
+
+    public AudioSource camerascucess;
+
+    public AudioSource camerafail;
     
 
     
@@ -33,27 +40,48 @@ public class Cameratesting : MonoBehaviour
         // when you left click a raycast is performed in the centre of your screen 
         if (Input.GetMouseButton(0))  // 0 is left click
         {
-            // if the raycast hits something it prints its name and saves the texture 
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit , maxCameraRaycast, ~layerToIgnore)) // should spilt this up 
+            if (Time.time >= nextClickTime)
             {
-                print(hit.transform.gameObject.name);
+                takepicture();
 
-
-                saveImage();
-                cameraoutputcanvas.SetActive(true);
-                Invoke("DisableUI", 2f);
-
-
-
-                if (hit.collider.CompareTag("Collision"))
-                {
-
-                    print("Hit a special thing and saved and image");
-                }
-
+                nextClickTime = Time.time + cameracooldown;
             }
+            //else
+            //{
+            //    camerafail.Play();
+            //}
+
         }
     }
+
+    public void takepicture()
+    {
+        // if the raycast hits something it prints its name and saves the texture 
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, maxCameraRaycast, ~layerToIgnore)) // should spilt this up 
+        {
+            print(hit.transform.gameObject.name);
+
+            camerascucess.Play();
+
+
+            saveImage();
+            cameraoutputcanvas.SetActive(true);
+            Invoke("DisableUI", 2f);
+
+
+
+            if (hit.collider.CompareTag("Collision"))
+            {
+
+                print("Hit a special thing and saved and image");
+                cameraoutputcanvas.GetComponentInChildren<TextMeshProUGUI>().text = "You captured the angle";
+
+            }
+
+        }
+    }
+
+
 
 
 
